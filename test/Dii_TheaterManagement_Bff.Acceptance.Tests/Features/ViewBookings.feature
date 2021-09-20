@@ -1,4 +1,5 @@
-﻿Feature: View Bookings
+﻿@ignore("temporarily")
+Feature: View Bookings
 - FIX THIS
   As a user
   I want to view the CurrentBookings
