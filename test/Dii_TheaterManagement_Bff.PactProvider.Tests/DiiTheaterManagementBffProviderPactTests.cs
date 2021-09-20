@@ -4,13 +4,8 @@ using PactNet.Infrastructure.Outputters;
 using PactTestingTools;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
-using Dii_TheaterManagement_Bff.PactProvider;
 
 namespace Dii_TheaterManagement_Bff.PactProvider.Tests
 {
@@ -70,7 +65,7 @@ namespace Dii_TheaterManagement_Bff.PactProvider.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "To do Later")]
         public void HonorPactWithSpa()
         {
             string consumerId = "green-theatermanagement-spa";
