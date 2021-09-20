@@ -1,4 +1,4 @@
-﻿@ignore("temporarily")
+﻿@ignore @web
 Feature: View Bookings
 - FIX THIS
   As a user
