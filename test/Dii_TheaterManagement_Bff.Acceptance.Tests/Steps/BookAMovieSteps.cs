@@ -146,7 +146,7 @@ namespace Dii_TheaterManagement_Bff.Acceptance.Tests.Steps
         [Then(@"the booking will be created")]
         public void ThenTheBookingWillBeCreated()
         {
-            response.IsSuccessStatusCode.Should().Be(false);
+            response.IsSuccessStatusCode.Should().Be(true);
             //response.StatusCode.Should().Be(HttpStatusCode.NoContent);
         }
 

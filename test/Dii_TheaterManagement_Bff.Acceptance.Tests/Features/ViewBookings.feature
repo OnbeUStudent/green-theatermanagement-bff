@@ -1,5 +1,4 @@
-﻿@ignore @web
-Feature: View Bookings
+﻿Feature: View Bookings
 - FIX THIS
   As a user
   I want to view the CurrentBookings
