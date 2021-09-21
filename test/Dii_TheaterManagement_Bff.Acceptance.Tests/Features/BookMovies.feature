@@ -1,5 +1,4 @@
-﻿@ignore @web
-Feature: Book a movie
+﻿Feature: Book a movie
 	Given this list of movies
   I want to book a movie
   So that it is visible as an option for customers to purchase tickets

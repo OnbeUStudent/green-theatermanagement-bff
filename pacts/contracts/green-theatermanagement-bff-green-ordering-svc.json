@@ -20,8 +20,8 @@
         },
         "body": [
           {
-            "MovieId": 1,
-            "Title": "Example Movie"
+            "MovieId": "f69d02bc-f103-482f-bc63-336649c49e94",
+            "Title": "testmovie"
           }
         ],
         "matchingRules": {
