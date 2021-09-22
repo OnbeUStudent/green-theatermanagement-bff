@@ -4,6 +4,8 @@ using PactTestingTools;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using TechTalk.SpecFlow;
 using Xunit;
 
 namespace Dii_TheaterManagement_Bff.Acceptance.Tests.Drivers
@@ -11,13 +13,13 @@ namespace Dii_TheaterManagement_Bff.Acceptance.Tests.Drivers
     public class Driver : IClassFixture<CustomWebApplicationFactory<Startup>>,
         IClassFixture<WebApplicationFactory<Dii_OrderingSvc.Fake.Startup>>
     {
-        
+
 
         public HttpClient _client;
-       
 
 
-        public Driver( CustomWebApplicationFactory<Startup> factory
+
+        public Driver(CustomWebApplicationFactory<Startup> factory
             , WebApplicationFactory<Dii_OrderingSvc.Fake.Startup> orderServiceFakeFactory
             )
         {
@@ -29,5 +31,9 @@ namespace Dii_TheaterManagement_Bff.Acceptance.Tests.Drivers
 
         }
 
+        internal void AddMoviesToDatabase(Table table)
+        {
+            // Note that we assume the specified movies are already in the seed data.
+        }
     }
 }
