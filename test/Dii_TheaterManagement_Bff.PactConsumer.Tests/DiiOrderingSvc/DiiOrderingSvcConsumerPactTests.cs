@@ -47,7 +47,7 @@ namespace Dii_TheaterManagement_Bff.PactConsumer.Tests.DiiOrderingSvc
                   {
                       { "Content-Type", "application/json; charset=utf-8" }
                   },
-                  Body = Match.MinType(new { MovieId = System.Guid.NewGuid(), Title = "Example Movie" }, 1)
+                  Body = Match.MinType(new { MovieId = "f69d02bc-f103-482f-bc63-336649c49e94", Title = "Example Movie" }, 1)
               });
             var httpClient = new HttpClient { BaseAddress = new Uri(_mockProviderServiceBaseUri) };
             httpClient.DefaultRequestHeaders

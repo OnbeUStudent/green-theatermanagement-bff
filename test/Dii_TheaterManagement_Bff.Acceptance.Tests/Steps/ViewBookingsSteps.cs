@@ -14,45 +14,47 @@ using TechTalk.SpecFlow.Assist;
 namespace Dii_TheaterManagement_Bff.Acceptance.Tests.Steps
 {
     [Binding]
-    public class BookingSteps
+    public class ViewBookingsSteps
     {
+
         private readonly Driver _driver;
         private readonly HttpClient _client;
-        private List<Movie> _moviesViewed;
+        private List<Booking> _bookingViewed;
+        private IEnumerable<BookingView> _expectedBookings;
 
-        public BookingSteps(Driver driver)
+        public ViewBookingsSteps(Driver driver)
         {
             _driver = driver;
             _client = driver._client;
         }
 
 
-        [Given(@"the following movies")]
-        public void GivenTheFollowingMovies(Table table)
+        [Given(@"list of CurrentBookingsView")]
+        public void GivenListOfCurrentBookingsView(Table table)
         {
+            _expectedBookings = table.CreateSet<BookingView>();
+
             _driver.AddMoviesToDatabase(table);
         }
 
-        [When(@"I view the list of movies")]
-        public async Task WhenIViewTheListOfMoviesAsync()
+        [When(@"I view bookings as an user")]
+        public async Task WhenIViewBookingsAsAnUserAsync()
         {
-            var response = await _client.GetAsync("/api/movies");
+            var response = await _client.GetAsync("/api/bookings");
 
             // Get the response
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             Console.WriteLine("Your response data is: " + json);
 
             // Save the result so we can inspect it later.
-            _moviesViewed = JsonConvert.DeserializeObject<List<Movie>>(json);
+            _bookingViewed = JsonConvert.DeserializeObject<List<Booking>>(json);
         }
 
-        [Then(@"the movie list should show")]
-        public void ThenTheMovieListShouldShow(Table table)
+        [Then(@"I am able to see all CurrentBookings")]
+        public void ThenIAmAbleToSeeAllCurrentBookings()
         {
-            var expectedMovies = table.CreateSet<MovieView>();
-
-            var expectedTitles = expectedMovies.Select(em => em.title);
-            var actualTitles = _moviesViewed.Select(am => am.Title);
+            var expectedTitles = _expectedBookings.Select(em => em.title);
+            var actualTitles = _bookingViewed.Select(am => am.Movie.Title);
 
             actualTitles.Should().Contain(expectedTitles);
         }
